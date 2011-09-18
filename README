@@ -1,0 +1,11 @@
+This is a simple raycaster (like Wolfenstein, but *much* simpler).
+
+It's based on the C++ code from http://lodev.org/cgtutor/raycasting.html
+
+The algorithm is the same, but there are obviously changes to get it to work on python + pygame instead of C++ + sdl
+
+It serves no purpose except as a fun diversion to see how difficult it would be to convert some C++ code to python.
+On my machine I get ~45-50fps, which is terrible really :-)
+
+Full credit for the algorithm to:
+http://lodev.org/cgtutor/raycasting.html
