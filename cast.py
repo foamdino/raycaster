@@ -135,15 +135,15 @@ def cast():
                 draw_end = height -1
 
             # choose color depending on number in map pos
-            if int(level[map_x][map_y]) == 1:
+            if level[map_x][map_y] == 1:
                 colour = RED
-            elif int(level[map_x][map_y]) == 2:
+            elif level[map_x][map_y] == 2:
                 colour = GREEN
-            elif int(level[map_x][map_y]) == 3:
+            elif level[map_x][map_y] == 3:
                 colour = BLUE
-            elif int(level[map_x][map_y]) == 4:
+            elif level[map_x][map_y] == 4:
                 colour = WHITE
-            elif int(level[map_x][map_y]) == 5:
+            elif level[map_x][map_y] == 5:
                 colour = YELLOW
             else:
                 colour = None
@@ -178,16 +178,16 @@ def cast():
         if 1 in list(keys):
             # move forward if there's no wall in front of you
             if keys[pygame.K_UP]:
-                if int(level[int(pos_x + dir_x * move_speed)][int(pos_y)]) == 0:
+                if level[int(pos_x + dir_x * move_speed)][int(pos_y)] == 0:
                     pos_x += dir_x * move_speed
-                if int(level[int(pos_x)][int(pos_y + dir_y * move_speed)]) == 0:
+                if level[int(pos_x)][int(pos_y + dir_y * move_speed)] == 0:
                     pos_y += dir_y * move_speed
 
             # move backwards if there's no wall behind you
             if keys[pygame.K_DOWN]:
-                if int(level[int(pos_x - dir_x * move_speed)][int(pos_y)]) == 0:
+                if level[int(pos_x - dir_x * move_speed)][int(pos_y)] == 0:
                     pos_x -= dir_x * move_speed
-                if int(level[int(pos_x)][int(pos_y - dir_y * move_speed)]) == 0:
+                if level[int(pos_x)][int(pos_y - dir_y * move_speed)] == 0:
                     pos_y -= dir_y * move_speed
 
             # rotate right
@@ -221,8 +221,9 @@ def cast():
             
 
 def load_level():
-    with open("level.txt") as file:
-        level_array = [line.split() for line in file]
+    with open("level.txt") as fyle:
+        level_array = [[int(x) for x in line.split()] for line in fyle]
+
     return level_array
 
 if __name__ == "__main__":
