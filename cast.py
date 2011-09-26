@@ -107,7 +107,7 @@ def cast():
                     side = 1
 
                 # check for hitting a wall
-                if int(level[map_x][map_y]) > 0:
+                if level[map_x][map_y] > 0:
                     hit = True
 
             # calc the distance projected on camera direction
@@ -177,21 +177,21 @@ def cast():
         keys = pygame.key.get_pressed()
         if 1 in list(keys):
             # move forward if there's no wall in front of you
-            if keys[pygame.K_UP]:
+            if keys[pygame.K_UP] or keys[pygame.K_w]:
                 if level[int(pos_x + dir_x * move_speed)][int(pos_y)] == 0:
                     pos_x += dir_x * move_speed
                 if level[int(pos_x)][int(pos_y + dir_y * move_speed)] == 0:
                     pos_y += dir_y * move_speed
 
             # move backwards if there's no wall behind you
-            if keys[pygame.K_DOWN]:
+            if keys[pygame.K_DOWN] or keys[pygame.K_s]:
                 if level[int(pos_x - dir_x * move_speed)][int(pos_y)] == 0:
                     pos_x -= dir_x * move_speed
                 if level[int(pos_x)][int(pos_y - dir_y * move_speed)] == 0:
                     pos_y -= dir_y * move_speed
 
             # rotate right
-            if keys[pygame.K_RIGHT]:
+            if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
                 # rotate camera plane and dir
                 old_dir_x = dir_x
                 dir_x = dir_x * cos(-rot_speed) - dir_y * sin(-rot_speed)
@@ -201,7 +201,7 @@ def cast():
                 plane_y = old_plane_x * sin(-rot_speed) + plane_y * cos(-rot_speed)
 
             # rotate left
-            if keys[pygame.K_LEFT]:
+            if keys[pygame.K_LEFT] or keys[pygame.K_a]:
                 # rotate camera plane and dir
                 old_dir_x = dir_x
                 dir_x = dir_x * cos(rot_speed) - dir_y * sin(rot_speed)
