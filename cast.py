@@ -190,6 +190,21 @@ def cast():
                 if level[int(pos_x)][int(pos_y - dir_y * move_speed)] == 0:
                     pos_y -= dir_y * move_speed
 
+            # strafe right if there's no wall to the right of you
+            if keys[pygame.K_q]:
+                if level[int(pos_x - plane_x * move_speed)][int(pos_y)] == 0:
+                    pos_x -= plane_x * move_speed
+                if level[int(pos_x)][int(pos_y - plane_y * move_speed)] == 0:
+                    pos_y -= plane_y * move_speed
+
+            # strafe left if there's no wall to the left of you
+            if keys[pygame.K_e]:
+                if level[int(pos_x + plane_x * move_speed)][int(pos_y)] == 0:
+                    pos_x += plane_x * move_speed
+                if level[int(pos_x)][int(pos_y + plane_y * move_speed)] == 0:
+                    pos_y += plane_y * move_speed
+                    
+                    
             # rotate right
             if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
                 # rotate camera plane and dir
